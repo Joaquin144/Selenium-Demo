@@ -1,16 +1,16 @@
-# This is a sample Python script.
+# We are using it to set PATH variable to SeleniumDrivers as we don't want to have them defined globally on our machine
+import os
+# webdriver emulates a browser for us
+from selenium import webdriver
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# r prefix means robust string. We use it before path value
+# os.environ['PATH'] += r"C:/SSD Softwares/SeleniumDrivers"
+# driver = webdriver.Chrome()
+from selenium.webdriver.common.by import By
 
+driver = webdriver.Chrome('C:\SSD Softwares\SeleniumDrivers\chromedriver.exe')
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+driver.get("https://www.w3schools.com/htmL/tryit.asp?filename=tryhtml_id_css")
+driver.implicitly_wait(3)
+my_element = driver.find_element(By.ID, 'getwebsitebtn')
+my_element.click()
